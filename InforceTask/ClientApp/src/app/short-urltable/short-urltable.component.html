@@ -1,0 +1,32 @@
+<h1 id="tableLabel1">Short URL Table</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!urls"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="urls">
+  <thead>
+    <tr>
+      <th>Long</th>
+      <th>Short</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let url of urls">
+      <td>{{ url.long }}</td>
+      <td>{{ url.short }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<section>
+  <form #form = "ngForm" (ngSubmit)="addUrl()">
+    <div>
+      <label for="urlInput" class="form-label">URL: </label>
+      <input type="text" class="form-contol" name="urlInput" id="urlInput" [(ngModel)]="addUrlRequest.long" />
+    </div>
+    <button type="submit" class="btn-primary">Add</button>
+  </form>
+</section>
